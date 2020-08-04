@@ -1,5 +1,6 @@
 <template>
 	<div>
+    <Swipe></Swipe>
 		<h1>这是首页</h1>
 		<MenuBar></MenuBar>
 	</div>
@@ -7,10 +8,12 @@
 
 <script>
   import MenuBar from '../../components/MenuBar.vue'
+  import Swipe from './base/Swipe.vue'
   export default {
     name: 'home',
     components: {
-      MenuBar
+      MenuBar,
+      Swipe
     }
   }
 </script>

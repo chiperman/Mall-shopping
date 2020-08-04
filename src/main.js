@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import api from './api/index.js'
 import {
   Tabbar,
   TabbarItem,
@@ -17,7 +18,7 @@ Vue.use(Tabbar)
   .use(Lazyload)
   .use(Notify)
 Vue.config.productionTip = false
-
+Vue.prototype.$api = api
 new Vue({
   router,
   store,
