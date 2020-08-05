@@ -4,6 +4,7 @@ import home from '../views/home/index.vue'
 import category from '../views/category/index.vue'
 import cart from '../views/cart/index.vue'
 import me from '../views/me/index.vue'
+import search from '../views/search/index.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -29,6 +30,11 @@ const routes = [{
     path: '/me',
     name: 'me',
     component: me
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: search
   }
 ]
 
