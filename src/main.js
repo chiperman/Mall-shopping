@@ -9,7 +9,15 @@ import {
   Swipe,
   SwipeItem,
   Lazyload,
-  Notify
+  Notify,
+  Sidebar,
+  SidebarItem,
+  NavBar,
+  Grid,
+  GridItem,
+  Col,
+  Row,
+  Image
 } from 'vant'
 Vue.use(Tabbar)
   .use(TabbarItem)
@@ -17,6 +25,8 @@ Vue.use(Tabbar)
   .use(SwipeItem)
   .use(Lazyload)
   .use(Notify)
+  .use(Sidebar).use(SidebarItem).use(NavBar).use(Grid).use(GridItem).use(Col).use(Row).use(Image)
+
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 new Vue({

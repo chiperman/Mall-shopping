@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../views/home/index.vue'
-import category from '../views/category/index.vue'
+import category from '../views/category/category.vue'
 import cart from '../views/cart/index.vue'
 import me from '../views/me/index.vue'
 Vue.use(VueRouter)
