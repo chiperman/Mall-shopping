@@ -20,8 +20,8 @@
     <!-- 秒杀商品 -->
     <van-row class="spike-goods" type="flex" justify="space-between">
       <van-col class="spike-goods-item" @click="goDetail" v-for="(item,index) in images" :key="index">
-        <van-image width="3rem" fit="contain" lazy-load radius="5px" :src="item.goods_cover_img" style="width: 80px;"/>
-        <div class="van-multi-ellipsis--l2">{{item.goods_name}}</div>
+        <van-image width="3rem" fit="contain" lazy-load radius="5px" :src="item.goods_cover_img" style="width: 80px;height: 100px;" />
+        <div style="overflow: hidden; text-overflow:ellipsis; ">{{item.goods_name}}</div>
         <div class="price">
           <span>￥{{item.selling_price}}</span>
           <s>￥{{item.original_price}}</s>
@@ -106,8 +106,7 @@
         margin-right: 7px;
         width: 50%;
 
-        img {
-        }
+        img {}
 
         .price {
           margin-top: 5px;

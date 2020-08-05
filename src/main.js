@@ -10,7 +10,6 @@ import {
   SwipeItem,
   Lazyload,
   Notify,
-<<<<<<< HEAD
   Search,
   Sticky,
   NavBar,
@@ -22,17 +21,11 @@ import {
   PullRefresh,
   Toast,
   Image,
-  CountDown
-=======
+  CountDown,
   Sidebar,
   SidebarItem,
-  NavBar,
   Grid,
-  GridItem,
-  Col,
-  Row,
-  Image
->>>>>>> 9b495c4bf2a5008c2d2c6d9852d6d30a305fb491
+  GridItem
 } from 'vant'
 Vue.use(Tabbar)
   .use(TabbarItem)
@@ -40,7 +33,6 @@ Vue.use(Tabbar)
   .use(SwipeItem)
   .use(Lazyload)
   .use(Notify)
-<<<<<<< HEAD
   .use(Search)
   .use(Sticky)
   .use(NavBar)
@@ -53,10 +45,10 @@ Vue.use(Tabbar)
   .use(Toast)
   .use(Image)
   .use(CountDown)
-=======
-  .use(Sidebar).use(SidebarItem).use(NavBar).use(Grid).use(GridItem).use(Col).use(Row).use(Image)
-
->>>>>>> 9b495c4bf2a5008c2d2c6d9852d6d30a305fb491
+  .use(Sidebar)
+  .use(SidebarItem)
+  .use(Grid)
+  .use(GridItem)
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 new Vue({
