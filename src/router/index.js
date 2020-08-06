@@ -3,7 +3,10 @@ import VueRouter from 'vue-router'
 import home from '../views/home/index.vue'
 import category from '../views/category/category.vue'
 import cart from '../views/cart/cart.vue'
-import me from '../views/me/me.vue'
+import me from '../views/me/index.vue'
+import set from '../views/set/set.vue'
+import addressmanage from '../views/addressManage/addressmanage.vue'
+import addressedit from '../views/addressEdit/addressedit.vue'
 import search from '../views/search/search.vue'
 import login from '../views/login/login.vue'
 import register from '../views/register/register.vue'
@@ -58,6 +61,21 @@ const routes = [{
     component: search
   },
   {
+    path: '/set',
+    name: 'set',
+    component: set
+  },
+  {
+    path: '/addressmanage',
+    name: 'addressmanage',
+    component: addressmanage
+  },
+  {
+    path: '/addressedit',
+    name: 'addressedit',
+    component: addressedit
+   },
+   {
     path: '/register',
     name: 'register',
     component: register

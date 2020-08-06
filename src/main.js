@@ -28,20 +28,24 @@ import {
   SidebarItem,
   Grid,
   GridItem,
+  Cell,
+  CellGroup,
   Button,
+  Switch,
+  AddressList,
+  AddressEdit,
+  Area,
+  Popup,
   Field,
   Dialog,
   Progress,
-  Cell,
   Checkbox,
   SwipeCell,
   Stepper,
   SubmitBar,
   CheckboxGroup,
-  CellGroup,
   Radio,
   PasswordInput,
-  Popup,
   NumberKeyboard,
   RadioGroup,
   ContactCard,
@@ -77,6 +81,7 @@ Vue.use(Tabbar)
   .use(Sidebar)
   .use(SidebarItem)
   .use(Grid)
+  .use(GridItem).use(Cell).use(CellGroup).use(Button).use(Switch).use(AddressList).use(AddressEdit).use(Area).use(Popup)
   .use(GridItem)
   .use(Button)
   .use(Field)
