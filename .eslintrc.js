@@ -18,6 +18,15 @@ module.exports = {
     'no-tabs': 'off',
     'quotes': [1, "single"],
     'semi': 'off',
-    "camelcase": ["error", {"allow": ["aa_bb"]}]
+    "camelcase": ["error", {
+      "allow": ["aa_bb"]
+    }],
+    "operator-linebreak": [2, "before", {
+      "overrides": {
+        "?": "after",
+        ":": "after",
+      }
+    }],
+    "no-unused-expressions": "off"
   }
 }

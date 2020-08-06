@@ -1,6 +1,12 @@
 import homeData from './requestApi/HomeData.js'
 import categoryData from './requestApi/categoryData.js'
+import login from './requestApi/login.js'
+import register from './requestApi/register.js'
+import cartData from './requestApi/cartData.js'
 export default {
-	homeData,
-  categoryData
+  homeData,
+  categoryData,
+  login,
+  register,
+  cartData
 }

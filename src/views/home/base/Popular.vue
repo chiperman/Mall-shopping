@@ -27,7 +27,7 @@
                 <span>￥{{item.selling_price}}</span>
                 <s>￥{{item.original_price}}</s>
               </div>
-              <van-progress color="#f2826a" stroke-width="7" pivot-text :percentage="item.percentage" />
+              <van-progress color="#f2826a" stroke-width="7" pivot-text :percentage="70" />
               <div class="purchased">{{item.stock_num}}</div>
             </van-col>
             <van-col :span="10" class="buy-btn">
