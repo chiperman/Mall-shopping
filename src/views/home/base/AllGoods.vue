@@ -7,7 +7,7 @@
     <!-- 商品列表 -->
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
       <van-row class="goods-list">
-        <van-col span="12" v-for="(item,index) in goodsData" :key="index" @click="goDetail(index)" class="goods-wrapper">
+        <van-col span="12" v-for="(item,index) in goodsData" :key="index" @click="goDetail(item.goods_id)" class="goods-wrapper">
           <div class="goods-item">
             <div class="goods-pic">
               <img :src="item.goods_cover_img" />
@@ -57,9 +57,9 @@
           if (this.goodsData.length >= this.allGoods.length) {
             this.finished = true
           }
-          this.goodsData = this.goodsData.concat(this.allGoods.slice(this.goodsData.length, this.goodsData.length + 2 > this.allGoods.length
-            ? this.goodsData.length + 1 : this.goodsData.length +
-            2))
+          this.goodsData = this.goodsData.concat(
+            this.allGoods.slice(this.goodsData.length, this.goodsData.length + 2 > this.allGoods.length ?
+              this.goodsData.length + 1 : this.goodsData.length + 2))
           this.loading = false;
           if (this.goodsData.length > 30) {
             this.finished = true;
@@ -76,7 +76,7 @@
         });
       },
       // 跳转到商品详细页
-      goDetail(index) {
+      goDetail(goodsId) {
         this.$toast.loading({
           message: "加载中...",
           forbidClick: true,
@@ -84,10 +84,7 @@
         });
         setTimeout(() => {
           this.$toast.clear()
-          this.$router.push({
-            name: "detail",
-            query: {}
-          });
+          this.$router.push(`goodsDetails/${goodsId}`);
         }, 500)
       }
     }

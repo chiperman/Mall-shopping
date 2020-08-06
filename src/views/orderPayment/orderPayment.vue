@@ -93,6 +93,14 @@
           if (this.value === "123456") {
             this.showPassWord = !this.showPassWord;
             this.$toast.clear();
+            var infoList = this.$route.params.infoList
+            var TotalPrice = this.$route.params.TotalPrice
+            var userId = this.$Cookies.get('userId')
+            this.$api.orderData.submitOrder(infoList, TotalPrice, userId).then(({
+              data
+            }) => {
+              console.log(data.success)
+            })
             this.$router.push("/paySuccess");
             //    this.$toast.success('支付成功');
           } else {

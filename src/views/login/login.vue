@@ -94,6 +94,10 @@
             }) => {
               console.log('登录')
               console.log(data.success)
+              this.$Cookies.set('userId', data.user_id, {
+                expires: 7
+              })
+              this.userId = data.user_id
               if (data.success === 0) {
                 this.isLoginSuccess = false
                 this.$dialog.alert({

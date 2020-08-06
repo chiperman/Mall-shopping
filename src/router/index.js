@@ -10,6 +10,7 @@ import register from '../views/register/register.vue'
 import orderPayment from '../views/orderPayment/orderPayment.vue'
 import submitOrder from '../views/cart/base/SubmitOrder'
 import paySuccess from '../views/cart/base/PaySuccess'
+import goodsDetails from '../views/goodsDetails/goodsDetails.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -33,7 +34,6 @@ const routes = [{
     beforeEnter: (to, from, next) => {
       var isLogin = localStorage.getItem("isLogin")
       isLogin === 'false' ? isLogin = false : isLogin = true
-      console.log(isLogin)
       isLogin ? next() : next("/login")
     }
   },
@@ -49,7 +49,6 @@ const routes = [{
     beforeEnter: (to, from, next) => {
       var isLogin = localStorage.getItem("isLogin")
       isLogin === 'false' ? isLogin = false : isLogin = true
-      console.log(isLogin)
       isLogin ? next() : next("/login")
     }
   },
@@ -77,6 +76,12 @@ const routes = [{
     path: '/paySuccess',
     name: 'paySuccess',
     component: paySuccess
+  },
+  {
+    path: '/goodsDetails/:goodsId',
+    name: 'goodsDetails',
+    component: goodsDetails,
+    props: true
   }
 ]
 

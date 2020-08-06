@@ -48,7 +48,13 @@ import {
   Card,
   Panel,
   CouponCell,
-  CouponList
+  CouponList,
+  ImagePreview,
+  Tag,
+  GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton,
+  Sku
 } from 'vant'
 Vue.use(Tabbar)
   .use(TabbarItem)
@@ -93,6 +99,12 @@ Vue.use(Tabbar)
   .use(Panel)
   .use(CouponCell)
   .use(CouponList)
+  .use(ImagePreview)
+  .use(Tag)
+  .use(GoodsAction)
+  .use(GoodsActionButton)
+  .use(GoodsActionIcon)
+  .use(Sku)
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 Vue.prototype.$Cookies = Cookies

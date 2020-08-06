@@ -49,7 +49,7 @@
     },
     methods: {
       goDetail(id) {
-        this.$router.push("/detail/id")
+        this.$router.push(`goodsDetails/${id}`)
       }
     },
     created() {

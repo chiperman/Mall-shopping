@@ -69,7 +69,8 @@
           TOKEN ? this.$router.push({
             name: 'orderPayment',
             params: {
-              TotalPrice: this.$route.params.TotalPrice
+              TotalPrice: this.$route.params.TotalPrice,
+              infoList: this.$route.params.infoList
             }
           }) : this.$router.push("/login")
         }, 1000)

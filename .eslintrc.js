@@ -18,8 +18,8 @@ module.exports = {
     'no-tabs': 'off',
     'quotes': [1, "single"],
     'semi': 'off',
-    "camelcase": ["error", {
-      "allow": ["aa_bb"]
+    "camelcase": [1, {
+      "properties": "never"
     }],
     "operator-linebreak": [2, "before", {
       "overrides": {

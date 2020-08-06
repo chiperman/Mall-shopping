@@ -19,7 +19,7 @@
     </van-row>
     <!-- 秒杀商品 -->
     <van-row class="spike-goods" type="flex" justify="space-between">
-      <van-col class="spike-goods-item" @click="goDetail" v-for="(item,index) in images" :key="index">
+      <van-col class="spike-goods-item" @click="goDetail(item.goods_id)" v-for="(item,index) in images" :key="index">
         <van-image width="3rem" fit="contain" lazy-load radius="5px" :src="item.goods_cover_img" style="width: 80px;height: 100px;" />
         <div style="overflow: hidden; text-overflow:ellipsis; ">{{item.goods_name}}</div>
         <div class="price">
@@ -39,8 +39,8 @@
       }
     },
     methods: {
-      goDetail() {
-        this.$router.push('/detail/goods_id=52157500821')
+      goDetail(goodsId) {
+        this.$router.push(`goodsDetails/${goodsId}`)
       },
       async getBannerImage() {
         await this.$api.homeData.banner().then(({

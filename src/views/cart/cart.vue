@@ -54,7 +54,7 @@
           <template slot="right">
             <van-button @click="handleCollection" square color="#f6da63" text="收藏" />
             <van-button @click="handleLookSimilar" square color="#eb8242" text="看相似" />
-            <van-button @click="handleDelete(index,shopIdex)" square color="#da2d2d" text="删除" />
+            <van-button @click="handleDelete(item.cart_item_id)" square color="#da2d2d" text="删除" />
           </template>
         </van-swipe-cell>
       </div>
@@ -100,7 +100,6 @@
           data.shopping_cart[i].isChecked = false
           this.cartInfoList.push(data.shopping_cart[i])
         }
-        console.log(this.cartInfoList)
       })
     },
     computed: {
@@ -148,17 +147,21 @@
         this.$toast.success("收藏成功");
       },
       //  删除商品订单
-      handleDelete(index, shopIdex) {
+      handleDelete(id) {
         this.$dialog
           .confirm({
             message: "你确定要删除该商品订单吗？"
           })
           .then(() => {
-            this.cartInfoList[shopIdex].productList.splice(index, 1);
-            //   如果没有对应的店铺信息，删除该项的店铺标题
-            if (!this.cartInfoList[shopIdex].productList.length) {
-              this.cartInfoList.splice(shopIdex, 1);
-            }
+            this.cartInfoList = this.cartInfoList.filter((item) => {
+              return (item.cart_item_id !== id)
+            })
+            this.$api.cartData.delCartGoods(this.$Cookies.get('userId'), id).then(({
+              data
+            }) => {
+              console.log('delCartGoods')
+              console.log(data.success)
+            })
           })
           .catch(() => {
             //    on cancel
@@ -193,8 +196,6 @@
       },
       //   全选
       handleAllChecked(e) {
-        console.log('this.allChecked')
-        console.log(this.allChecked);
         for (var i = 0; i < this.cartInfoList.length; i++) {
           if (!this.allChecked) {
             this.cartInfoList[i].isChecked = false
