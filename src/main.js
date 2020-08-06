@@ -25,7 +25,15 @@ import {
   Sidebar,
   SidebarItem,
   Grid,
-  GridItem
+  GridItem,
+  Cell,
+  CellGroup,
+  Button,
+  Switch,
+  AddressList,
+  AddressEdit,
+  Area,
+  Popup
 } from 'vant'
 Vue.use(Tabbar)
   .use(TabbarItem)
@@ -48,7 +56,7 @@ Vue.use(Tabbar)
   .use(Sidebar)
   .use(SidebarItem)
   .use(Grid)
-  .use(GridItem)
+  .use(GridItem).use(Cell).use(CellGroup).use(Button).use(Switch).use(AddressList).use(AddressEdit).use(Area).use(Popup)
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 new Vue({

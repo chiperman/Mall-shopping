@@ -3,6 +3,6 @@
     <router-view/>
   </div>
 </template>
-
-<style>
+<style lang="scss" scoped>
+@import "./assets/style/common.css";
 </style>

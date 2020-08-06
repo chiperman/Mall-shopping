@@ -5,6 +5,9 @@ import category from '../views/category/category.vue'
 import cart from '../views/cart/index.vue'
 import me from '../views/me/index.vue'
 import search from '../views/search/index.vue'
+import set from '../views/set/set.vue'
+import addressmanage from '../views/addressManage/addressmanage.vue'
+import addressedit from '../views/addressEdit/addressedit.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -35,6 +38,21 @@ const routes = [{
     path: '/search',
     name: 'search',
     component: search
+  },
+  {
+    path: '/set',
+    name: 'set',
+    component: set
+  },
+  {
+    path: '/addressmanage',
+    name: 'addressmanage',
+    component: addressmanage
+  },
+  {
+    path: '/addressedit',
+    name: 'addressedit',
+    component: addressedit
   }
 ]
 
