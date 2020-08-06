@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import api from './api/index.js'
+import Cookies from 'js-cookie'
+import '@/assets/style/common.css'
 import {
   Tabbar,
   TabbarItem,
@@ -33,7 +35,24 @@ import {
   AddressList,
   AddressEdit,
   Area,
-  Popup
+  Popup,
+  Field,
+  Dialog,
+  Progress,
+  Checkbox,
+  SwipeCell,
+  Stepper,
+  SubmitBar,
+  CheckboxGroup,
+  Radio,
+  PasswordInput,
+  NumberKeyboard,
+  RadioGroup,
+  ContactCard,
+  Card,
+  Panel,
+  CouponCell,
+  CouponList
 } from 'vant'
 Vue.use(Tabbar)
   .use(TabbarItem)
@@ -57,8 +76,31 @@ Vue.use(Tabbar)
   .use(SidebarItem)
   .use(Grid)
   .use(GridItem).use(Cell).use(CellGroup).use(Button).use(Switch).use(AddressList).use(AddressEdit).use(Area).use(Popup)
+  .use(GridItem)
+  .use(Button)
+  .use(Field)
+  .use(Dialog)
+  .use(Progress)
+  .use(Cell)
+  .use(Checkbox)
+  .use(SubmitBar)
+  .use(SwipeCell)
+  .use(Stepper)
+  .use(CheckboxGroup)
+  .use(Radio)
+  .use(CellGroup)
+  .use(PasswordInput)
+  .use(Popup)
+  .use(RadioGroup)
+  .use(NumberKeyboard)
+  .use(ContactCard)
+  .use(Card)
+  .use(Panel)
+  .use(CouponCell)
+  .use(CouponList)
 Vue.config.productionTip = false
 Vue.prototype.$api = api
+Vue.prototype.$Cookies = Cookies
 new Vue({
   router,
   store,

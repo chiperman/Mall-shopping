@@ -57,9 +57,7 @@
           if (this.goodsData.length >= this.allGoods.length) {
             this.finished = true
           }
-          this.goodsData = this.goodsData.concat(this.allGoods.slice(this.goodsData.length, this.goodsData.length + 2 > this.allGoods.length
-            ? this.goodsData.length + 1 : this.goodsData.length +
-            2))
+          this.goodsData = this.goodsData.concat(this.allGoods.slice(this.goodsData.length, this.goodsData.length + 2 > this.allGoods.length ? this.goodsData.length + 1 : this.goodsData.length + 2))
           this.loading = false;
           if (this.goodsData.length > 30) {
             this.finished = true;
