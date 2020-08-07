@@ -54,7 +54,10 @@
             city: content.city,
             country: content.country,
             address: content.addressDetail,
-            isDefault: content.isDefault
+            isDefault: content.isDefault,
+            TotalPrice: this.$route.params.TotalPrice,
+            infoList: this.$route.params.infoList,
+            isOrder: this.$route.params.isOrder
           }
         })
         this.$api.addressData.editAddress(content.uid, this.AddressInfo).then(({
@@ -70,15 +73,17 @@
           params: {
             // index: content.i,
             ondelete: true,
-            id: content.id
-            // uid: content.uid
-            // name: content.name,
-            // tel: content.tel,
-            // province: content.province,
-            // city: content.city,
-            // country: content.country,
-            // address: content.addressDetail,
-            // isDefault: content.isDefault
+            id: content.id,
+            name: content.name,
+            tel: content.tel,
+            province: content.province,
+            city: content.city,
+            country: content.country,
+            address: content.addressDetail,
+            isDefault: content.isDefault,
+            TotalPrice: this.$route.params.TotalPrice,
+            infoList: this.$route.params.infoList,
+            isOrder: this.$route.params.isOrder
           }
         })
         this.$api.addressData.delAddress(content.uid, content.id).then(({

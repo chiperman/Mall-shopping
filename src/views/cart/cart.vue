@@ -93,7 +93,7 @@
     created() {
       const TOKEN = this.$Cookies.get("TOKEN");
       TOKEN ? (this.hisGoodsOrder = true) : (this.tipsTxt = "去登录");
-      this.$api.cartData.cartData().then(({
+      this.$api.cartData.cartData(this.$Cookies.get('userId')).then(({
         data
       }) => {
         for (var i = 0; i < data.shopping_cart.length; i++) {
@@ -129,6 +129,9 @@
         });
         setTimeout(() => {
           this.isLoading = false;
+          this.cartInfoList = this.cartInfoList.filter((item) => {
+            return (item.isChecked === true)
+          })
           this.$router.push({
             name: 'submitOrder',
             params: {

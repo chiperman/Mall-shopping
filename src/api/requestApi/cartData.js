@@ -1,7 +1,9 @@
 import axios from '../http.js'
 const cartData = {
-  async cartData() {
-    return await axios.get('/user/checkShopCart')
+  async cartData(userId) {
+    return await axios.post('/user/checkShopCart', {
+      userId: userId
+    })
   },
   async delCartGoods(userId, cartItemId) {
     return await axios.post('/u-action/delCartGoods', {

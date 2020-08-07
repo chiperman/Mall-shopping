@@ -6,11 +6,14 @@
       </template>
     </van-nav-bar>
     <van-address-list v-model="chosenAddressId" :list="list" :disabled-list="disabledList" disabled-text="以下地址超出配送范围"
-      default-tag-text="默认" @add="onAdd" @edit="onEdit" />
+      default-tag-text="默认" @add="onAdd" @edit="onEdit" @select="onSelect" />
   </div>
 </template>
 
 <script>
+  import {
+    mapState
+  } from 'vuex'
   export default {
     data() {
       return {
@@ -83,15 +86,43 @@
             name: item.name,
             tel: item.tel,
             id: item.id,
+            isDefault: item.isDefault,
+            TotalPrice: this.$route.params.TotalPrice,
+            infoList: this.$route.params.infoList,
+            isOrder: 'true',
             uid: item.uid,
-            address: item.address,
-            isDefault: item.isDefault
+            address: item.address
           }
         })
       },
       onClickLeft() {
-        this.$router.push('/set')
+        if (this.$route.params.isOrder === false || this.$route.params.isOrder === undefined) {
+          this.$router.go(-1)
+        } else {
+          this.$router.push({
+            name: "submitOrder",
+            params: {
+              TotalPrice: this.$route.params.TotalPrice,
+              infoList: this.$route.params.infoList
+            }
+          })
+        }
+      },
+      onSelect(item, index) {
+        if (this.$route.params.isOrder === false || this.$route.params.isOrder === undefined) {} else {
+          this.$router.push({
+            name: "submitOrder",
+            params: {
+              TotalPrice: this.$route.params.TotalPrice,
+              infoList: this.$route.params.infoList
+            }
+          })
+        }
+        this.$store.dispatch("editAddressInfo", item)
       }
+    },
+    computed: {
+      ...mapState(["editAddressInfo"])
     }
   };
 </script>

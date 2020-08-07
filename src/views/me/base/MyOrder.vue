@@ -2,7 +2,7 @@
   <!-- 我的订单 -->
   <div class='my-order'>
     <div class='order-wrapper'>
-      <van-cell value='查看更多' is-link>
+      <van-cell value='查看更多' is-link @click="onMore">
         <template slot='title'>
           <span class='custom-title'>我的订单</span>
         </template>
@@ -51,9 +51,9 @@
     },
     methods: {
       // 路由跳转
-      // onMore() {
-      //   this.$router.push('/order')
-      // }
+      onMore() {
+        this.$router.push('/orderManage')
+      }
     }
   };
 </script>
