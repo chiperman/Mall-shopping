@@ -26,14 +26,15 @@
         list: [],
         disabledList: [{
           id: '3',
-          name: '王五',
+          name: '你五',
           tel: '1320000000',
           address: '火星'
         }]
       };
     },
     created() {
-      this.$api.addressData.getAddressList(this.$Cookies.get('userId')).then(({
+      // this.$Cookies.get('userId')
+      this.$api.addressData.getAddressList(1).then(({
         data
       }) => {
         this.getlist = data.address_info
