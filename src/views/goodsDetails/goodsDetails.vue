@@ -36,7 +36,7 @@
       <van-goods-action-button @click="onBuyClicked" type="danger" text="立即购买" />
     </van-goods-action>
     <!-- 商品sku -->
-    <goods-sku :goodsInfo='goodsInfo' ref="sku"></goods-sku>
+    <goods-sku ref="sku"></goods-sku>
   </div>
 </template>
 
@@ -132,6 +132,7 @@
           data
         }) => {
           this.goodsInfo = data.goods_info
+          this.$refs.sku._data.goodsInfo = this.goodsInfo
           this.banner.push(data.goods_info.goods_cover_img); // banner 轮播图
           this.detailImg = data.goods_info.goods_cover_img; // 详情内容图片
           this.goodsDesc = data.goods_info.goods_name; //  商品的标题
