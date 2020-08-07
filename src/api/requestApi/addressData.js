@@ -1,7 +1,9 @@
 import axios from '../http.js'
 const addressData = {
   async getAddressList(userId) {
-    return await axios.get('/user/addressList')
+    return await axios.post('/user/addressList', {
+      userId: userId
+    })
   },
   async editAddress(userId, addressInfo) {
     return await axios.post('/u-action/editAddress', {
