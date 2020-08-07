@@ -70,15 +70,7 @@
     },
     methods: {
       // 提示用户选择登录方式
-      TispLoginWay() {
-        this.$dialog
-          .alert({
-            message: "提示：请用任意的用户和密码进行登录!"
-          })
-          .then(() => {
-            //  on close
-          });
-      },
+      TispLoginWay() {},
       //  返回上一页
       handleBack() {
         this.$router.go(-1);
