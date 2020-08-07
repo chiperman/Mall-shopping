@@ -101,6 +101,16 @@
             }) => {
               console.log(data.success)
             })
+            // 提交订单之后，清除购物车中已经购买的物品
+            for (var i = 0; i < infoList.length; i++) {
+              this.$api.cartData.delCartGoods(this.$Cookies.get('userId'), infoList[i].cart_item_id)
+                .then(({
+                  data
+                }) => {
+                  console.log('删除购物车物品')
+                  console.log(data.success)
+                })
+            }
             this.$router.push("/paySuccess");
             //    this.$toast.success('支付成功');
           } else {

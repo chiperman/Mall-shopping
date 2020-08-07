@@ -58,7 +58,9 @@ import {
   GoodsAction,
   GoodsActionIcon,
   GoodsActionButton,
-  Sku
+  Sku,
+  Tab,
+  Tabs
 } from 'vant'
 Vue.use(Tabbar)
   .use(TabbarItem)
@@ -110,6 +112,8 @@ Vue.use(Tabbar)
   .use(GoodsActionButton)
   .use(GoodsActionIcon)
   .use(Sku)
+  .use(Tab)
+  .use(Tabs)
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 Vue.prototype.$Cookies = Cookies

@@ -2,12 +2,10 @@ import axios from "../http"
 
 const detailData = {
   // 商品详细页数据请求
-  data(goodsId) {
+  async data(goodsId) {
     console.log(`/goods/goodsDetails/${goodsId}`)
-    return axios.get('/goods/goodsDetails/', {
-      params: {
-        goodsId: goodsId
-      }
+    return await axios.post('/goods/goodsDetails/', {
+      goodsId: goodsId
     })
   }
 }

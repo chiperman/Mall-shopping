@@ -14,6 +14,7 @@ import orderPayment from '../views/orderPayment/orderPayment.vue'
 import submitOrder from '../views/cart/base/SubmitOrder'
 import paySuccess from '../views/cart/base/PaySuccess'
 import goodsDetails from '../views/goodsDetails/goodsDetails.vue'
+import orderManage from '../views/orderManage/orderManage.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -35,9 +36,9 @@ const routes = [{
     name: 'cart',
     component: cart,
     beforeEnter: (to, from, next) => {
-      var isLogin = localStorage.getItem("isLogin")
+      let isLogin = localStorage.getItem("isLogin")
       isLogin === 'false' ? isLogin = false : isLogin = true
-      isLogin ? next() : next("/login")
+      isLogin ? next() : router.push('/login')
     }
   },
   {
@@ -50,9 +51,9 @@ const routes = [{
     name: 'me',
     component: me,
     beforeEnter: (to, from, next) => {
-      var isLogin = localStorage.getItem("isLogin")
+      let isLogin = localStorage.getItem("isLogin")
       isLogin === 'false' ? isLogin = false : isLogin = true
-      isLogin ? next() : next("/login")
+      isLogin ? next() : router.push('/login')
     }
   },
   {
@@ -74,8 +75,8 @@ const routes = [{
     path: '/addressedit',
     name: 'addressedit',
     component: addressedit
-   },
-   {
+  },
+  {
     path: '/register',
     name: 'register',
     component: register
@@ -100,19 +101,19 @@ const routes = [{
     name: 'goodsDetails',
     component: goodsDetails,
     props: true
+  },
+  {
+    path: '/orderManage',
+    name: 'orderManage',
+    component: orderManage
   }
 ]
 
 const router = new VueRouter({
   routes
 })
-const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
-
-VueRouter.prototype.push = function push(location, onResolve, onReject) {
-  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
-  return originalPush.call(this, location).catch(err => err)
-}
+// const originalPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
 export default router

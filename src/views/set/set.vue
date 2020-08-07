@@ -97,8 +97,9 @@
           })
           .then(() => {
             this.$toast('退出成功');
+            localStorage.setItem("isLogin", false);
             // localStorage.removeItem('isLogin')
-            // this.$Cookies.remove('TOKEN')
+            this.$Cookies.set('TOKEN', '')
             this.$router.push('/')
           })
           .catch(() => {

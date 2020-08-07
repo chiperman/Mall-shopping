@@ -9,17 +9,17 @@
       </van-nav-bar>
     </van-sticky>
     <!-- 收货地址 -->
-    <!-- <van-contact-card @click="onContactCard" :type="type" :name="editAddressInfo.name" :tel="editAddressInfo.tel"
-      :add-text="editAddressInfo.address" /> -->
+    <van-contact-card @click="onContactCard" :type="type" :name="editAddressInfo.name" :tel="editAddressInfo.tel"
+      :add-text="editAddressInfo.address" />
     <!-- 商品信息 -->
     <van-panel title="商品信息">
-      <div v-for="(item,index) in this.$route.params.infoList" :key=index>
+      <div v-for="(item,index) in infoList" :key=index>
         <van-card :num="item.goods_count" :price="item.selling_price" desc="440ml;10件，套装" :title="item.goods_name"
           :thumb="item.goods_cover_img" />
       </div>
     </van-panel>
     <!-- 商品cell -->
-    <van-cell title="商品总价" value-class="text-color" :value="'￥'+this.$route.params.TotalPrice" size="large" />
+    <van-cell title="商品总价" value-class="text-color" :value="'￥'+totalPrice" size="large" />
     <!-- 优惠卷 -->
     <goods-coupon></goods-coupon>
     <!-- 发票 -->
@@ -31,15 +31,15 @@
       <van-field v-model="message" rows="1" autosize label="订单备注" type="textarea" placeholder="请输入留言" />
     </van-cell-group>
     <!-- 确认支付 -->
-    <van-submit-bar safe-area-inset-bottom :price="this.$route.params.TotalPrice * 100" :loading='loading' button-text="提交订单" @submit="onSubmitPay" />
+    <van-submit-bar safe-area-inset-bottom :price="totalPrice * 100" :loading='loading' button-text="提交订单" @submit="onSubmitPay" />
   </div>
 </template>
 
 <script>
   import GoodsCoupon from "./GoodsCoupon";
-  // import {
-  //   mapState
-  // } from "vuex"
+  import {
+    mapState
+  } from "vuex"
   export default {
     components: {
       GoodsCoupon
@@ -48,12 +48,14 @@
       return {
         type: "edit",
         message: "", // 下单留言信息
-        loading: false
+        loading: false,
+        infoList: this.$route.params.infoList,
+        totalPrice: this.$route.params.TotalPrice
       };
     },
     mounted() {
       // 判断是否有地址
-      // Object.keys(this.editAddressInfo).length ? this.type = "edit" : this.type = "add"
+      Object.keys(this.editAddressInfo).length ? this.type = "edit" : this.type = "add"
     },
     created() {},
     methods: {
@@ -69,19 +71,26 @@
           TOKEN ? this.$router.push({
             name: 'orderPayment',
             params: {
-              TotalPrice: this.$route.params.TotalPrice,
-              infoList: this.$route.params.infoList
+              TotalPrice: this.totalPrice,
+              infoList: this.infoList
             }
           }) : this.$router.push("/login")
         }, 1000)
       },
       // 点击联系人卡片
       onContactCard() {
-        this.$router.push("/address")
+        this.$router.push({
+          name: 'addressmanage',
+          params: {
+            TotalPrice: this.totalPrice,
+            infoList: this.infoList,
+            isOrder: 'true'
+          }
+        })
       }
     },
     computed: {
-      // ...mapState(["editAddressInfo"])
+      ...mapState(["editAddressInfo"])
     }
   };
 </script>

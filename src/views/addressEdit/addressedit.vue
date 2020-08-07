@@ -52,7 +52,10 @@
             city: content.city,
             country: content.country,
             address: content.addressDetail,
-            isDefault: content.isDefault
+            isDefault: content.isDefault,
+            TotalPrice: this.$route.params.TotalPrice,
+            infoList: this.$route.params.infoList,
+            isOrder: this.$route.params.isOrder
           }
         })
       },
@@ -69,7 +72,10 @@
             city: content.city,
             country: content.country,
             address: content.addressDetail,
-            isDefault: content.isDefault
+            isDefault: content.isDefault,
+            TotalPrice: this.$route.params.TotalPrice,
+            infoList: this.$route.params.infoList,
+            isOrder: this.$route.params.isOrder
           }
         })
       },

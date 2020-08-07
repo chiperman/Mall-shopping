@@ -2,10 +2,16 @@ import axios from '../http.js'
 const orderData = {
   async submitOrder(infoList, totalPrice, userId) {
     return await axios.post('/u-action/submitOrder', {
-      user_id: userId,
-      total_price: totalPrice,
-      pay_status: '已支付',
-      pay_type: '支付宝'
+      userId: userId,
+      totalPrice: totalPrice,
+      payStatus: 1,
+      payType: '支付宝',
+      goodsInfo: infoList
+    })
+  },
+  async orderList(userId) {
+    return await axios.post('/user/orderList', {
+      userId: userId
     })
   }
 }
