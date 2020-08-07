@@ -71,7 +71,7 @@
           id: '',
           name: '王五',
           tel: '136000000000',
-          address: '地球',
+          address: '四川省成都市成华区成都理工大学',
           isDefault: false
         })
       },
