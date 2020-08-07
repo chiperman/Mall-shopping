@@ -60,7 +60,7 @@
             isOrder: this.$route.params.isOrder
           }
         })
-        this.$api.addressData.editAddress(content.uid, this.AddressInfo).then(({
+        this.$api.addressData.editAddress(this.$Cookies.get('userId'), this.AddressInfo).then(({
           data
         }) => {
           console.log('editAddress')

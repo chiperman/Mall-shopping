@@ -74,7 +74,7 @@
         this.list.push({
           id: '',
           name: '王五',
-          tel: '136000000000',
+          tel: '13600000000',
           address: '四川省成都市成华区成都理工大学',
           isDefault: false
         })
