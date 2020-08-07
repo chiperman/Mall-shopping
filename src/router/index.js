@@ -15,6 +15,7 @@ import submitOrder from '../views/cart/base/SubmitOrder'
 import paySuccess from '../views/cart/base/PaySuccess'
 import goodsDetails from '../views/goodsDetails/goodsDetails.vue'
 import orderManage from '../views/orderManage/orderManage.vue'
+import collection from '../views/collection/collection.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -106,6 +107,11 @@ const routes = [{
     path: '/orderManage',
     name: 'orderManage',
     component: orderManage
+  },
+  {
+    path: '/collection',
+    name: 'collection',
+    component: collection
   }
 ]
 

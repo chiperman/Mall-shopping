@@ -52,7 +52,7 @@
             </van-row>
           </div>
           <template slot="right">
-            <van-button @click="handleCollection" square color="#f6da63" text="收藏" />
+            <van-button @click="handleCollection(item.goods_id)" square color="#f6da63" text="收藏" />
             <van-button @click="handleLookSimilar" square color="#eb8242" text="看相似" />
             <van-button @click="handleDelete(item.cart_item_id)" square color="#da2d2d" text="删除" />
           </template>
@@ -146,7 +146,13 @@
         this.$router.push("/");
       },
       //   商品订单滑动收藏事件
-      handleCollection() {
+      handleCollection(goods_id) {
+        this.$api.collectionData.editCollection(this.$Cookies.get('userId'), goods_id, true).then(({
+          data
+        }) => {
+          console.log('editCollection')
+          console.log(data.is_collection)
+        })
         this.$toast.success("收藏成功");
       },
       //  删除商品订单

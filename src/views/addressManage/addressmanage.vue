@@ -11,7 +11,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import {
     mapState
   } from 'vuex'
@@ -19,6 +18,10 @@
     data() {
       return {
         chosenAddressId: '1',
+        del_id: {
+          uid: '',
+          id: ''
+        },
         getlist: [],
         list: [],
         disabledList: [{
@@ -30,7 +33,7 @@
       };
     },
     created() {
-      this.$api.addressData.getAddressList().then(({
+      this.$api.addressData.getAddressList(this.$Cookies.get('userId')).then(({
         data
       }) => {
         this.getlist = data.address_info
@@ -53,7 +56,6 @@
     updated() {
       for (let i = 0; i < this.list.length; i++) {
         if (this.$route.params.ondelete && this.$route.params.id === this.list[i].id) {
-          axios.put('/u-action/delAddress', this.list[i])
           this.list.splice(i, 1)
         }
         if (this.list[i].id !== this.$route.params.id) {
@@ -65,7 +67,6 @@
           this.list[i].isDefault = this.$route.params.isDefault
         }
       }
-      axios.put('/u-action/editAddress', this.list[this.$route.params.index])
     },
     methods: {
       onAdd() {
@@ -88,12 +89,14 @@
             isDefault: item.isDefault,
             TotalPrice: this.$route.params.TotalPrice,
             infoList: this.$route.params.infoList,
-            isOrder: 'true'
+            isOrder: 'true',
+            uid: item.uid,
+            address: item.address
           }
         })
       },
       onClickLeft() {
-        if (this.$route.params.isOrder === '') {
+        if (this.$route.params.isOrder === false || this.$route.params.isOrder === undefined) {
           this.$router.go(-1)
         } else {
           this.$router.push({

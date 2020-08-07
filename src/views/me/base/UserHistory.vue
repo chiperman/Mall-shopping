@@ -2,7 +2,7 @@
   <!-- 用户浏览记录 -->
   <div class='user-history'>
     <van-row type='flex' justify='space-between' align='center' class='history-list'>
-      <van-col span='6' class='item' v-for='(item,index) in Data' :key='index'>
+      <van-col span='6' class='item' v-for='(item,index) in Data' :key='index' @click='onClick(item)'>
         <span>{{item.num}}</span>
         <span class='m-t-5' style="font-size: smaller;">{{item.name}}</span>
       </van-col>
@@ -31,6 +31,13 @@
             num: '44'
           }
         ]
+      }
+    },
+    methods: {
+      onClick(item) {
+        if (item.name === '收藏夹') {
+          this.$router.push('/collection')
+        }
       }
     }
   };
