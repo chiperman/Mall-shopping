@@ -97,7 +97,13 @@
       },
       onClickLeft() {
         if (this.$route.params.isOrder === false || this.$route.params.isOrder === undefined) {
-          this.$router.go(-1)
+          this.$router.push({
+            name: "submitOrder",
+            params: {
+              TotalPrice: this.$route.params.TotalPrice,
+              infoList: this.$route.params.infoList
+            }
+          })
         } else {
           this.$router.push({
             name: "submitOrder",
