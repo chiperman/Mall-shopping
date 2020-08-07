@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'https://www.fastmock.site/mock/3f48e4c3a95cb7afca5bc1a
 
 axios.defaults.timeout = 10000
 
-axios.defaults.headers['Content-Type'] = 'application/x-www-from-urlencoded'
+axios.defaults.headers['Content-Type'] = 'application/json'
 
 /*
  * 设置请求拦截器
