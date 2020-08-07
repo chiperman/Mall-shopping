@@ -22,28 +22,14 @@
   export default {
     data() {
       return {
-        collect_list: [],
-        all_goods_list: [],
         collect_goods_list: []
       }
     },
     created() {
-      this.$api.homeData.banner().then(({
-        data
-      }) => {
-        this.all_goods_list = data.goods_info
-      })
       this.$api.collectionData.getCollectionList(this.$Cookies.get('userId')).then(({
         data
       }) => {
-        this.collect_list = data.collect_Info
-        for (let i = 0; i < this.collect_list.length; i++) {
-          for (let j = 0; j < this.all_goods_list.length; j++) {
-            if (this.collect_list[i].goods_id === this.all_goods_list[j].goods_id) {
-              this.collect_goods_list.push(this.all_goods_list[j])
-            }
-          }
-        }
+        this.collect_goods_list = data.collect_Info
       })
     },
     methods: {

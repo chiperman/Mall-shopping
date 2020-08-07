@@ -34,7 +34,7 @@
     },
     created() {
       // this.$Cookies.get('userId')
-      this.$api.addressData.getAddressList(1).then(({
+      this.$api.addressData.getAddressList(this.$Cookies.get('userId')).then(({
         data
       }) => {
         this.getlist = data.address_info
@@ -90,7 +90,7 @@
             isDefault: item.isDefault,
             TotalPrice: this.$route.params.TotalPrice,
             infoList: this.$route.params.infoList,
-            isOrder: 'true',
+            isOrder: this.$route.params.isOrder,
             uid: item.uid,
             address: item.address
           }

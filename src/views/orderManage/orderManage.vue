@@ -10,20 +10,6 @@
       <van-tab title="全部">
         <order-card></order-card>
       </van-tab>
-      <!-- 待付款订单 -->
-      <!-- <van-tab title="待付款">
-        <order-card></order-card>
-      </van-tab>
-      <van-tab title="待发货">
-        <order-card></order-card>
-      </van-tab>
-      <van-tab title="待收货">
-        <order-card></order-card>
-      </van-tab>
-      <van-tab title="待评价">
-        <order-card></order-card>
-      </van-tab>
-      <van-tab title="售后">暂无售后订单</van-tab> -->
     </van-tabs>
   </div>
 </template>
