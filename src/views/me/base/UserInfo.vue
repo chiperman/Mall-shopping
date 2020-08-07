@@ -6,7 +6,7 @@
           <img src='../../../assets/images/avatar.jpg' />
         </div>
         <div class='user-name'>
-          <div class='name'>你好<!-- ,{{$Cookies.get('TOKEN')}} --></div>
+          <div class='name'>你好<!-- ,{{this.$Cookies.get('username')}} --></div>
           <div>享受生活,享受Happy Shopping!</div>
         </div>
       </van-col>
@@ -38,7 +38,7 @@
     .user-info-wrapper {
       padding: 0 15px;
       height: 180px;
-      background: linear-gradient(to bottom, #f06c7a 0%, #f06c7a 100%);
+      background: linear-gradient(to bottom, #5aaafb 0%, #5aaafb 100%);
 
       .user-info {
         display: flex;

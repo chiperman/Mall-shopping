@@ -28,7 +28,8 @@
           areaCode: '', // 地址code：ID
           addressDetail: '', // 详细地址
           isDefault: false, // 是否选择默认
-          id: ''
+          id: '',
+          uid: ''
         }
       };
     },
@@ -37,6 +38,7 @@
       this.AddressInfo.name = this.$route.params.name
       this.AddressInfo.tel = this.$route.params.tel
       this.AddressInfo.id = this.$route.params.id
+      this.AddressInfo.uid = this.$route.params.uid
       this.AddressInfo.isDefault = this.$route.params.isDefault
     },
     methods: {
@@ -55,22 +57,35 @@
             isDefault: content.isDefault
           }
         })
+        this.$api.addressData.editAddress(content.uid, this.AddressInfo).then(({
+          data
+        }) => {
+          console.log('editAddress')
+          console.log(data.success)
+        })
       },
       onDelete(content) {
         this.$router.push({
           name: 'addressmanage',
           params: {
-            index: content.i,
+            // index: content.i,
             ondelete: true,
-            id: content.id,
-            name: content.name,
-            tel: content.tel,
-            province: content.province,
-            city: content.city,
-            country: content.country,
-            address: content.addressDetail,
-            isDefault: content.isDefault
+            id: content.id
+            // uid: content.uid
+            // name: content.name,
+            // tel: content.tel,
+            // province: content.province,
+            // city: content.city,
+            // country: content.country,
+            // address: content.addressDetail,
+            // isDefault: content.isDefault
           }
+        })
+        this.$api.addressData.delAddress(content.uid, content.id).then(({
+          data
+        }) => {
+          console.log('delAddress')
+          console.log(data.success)
         })
       },
       onChangeDetail(val) {},

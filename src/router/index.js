@@ -14,6 +14,7 @@ import orderPayment from '../views/orderPayment/orderPayment.vue'
 import submitOrder from '../views/cart/base/SubmitOrder'
 import paySuccess from '../views/cart/base/PaySuccess'
 import goodsDetails from '../views/goodsDetails/goodsDetails.vue'
+import collection from '../views/collection/collection.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -35,9 +36,9 @@ const routes = [{
     name: 'cart',
     component: cart,
     beforeEnter: (to, from, next) => {
-      var isLogin = localStorage.getItem("isLogin")
+      var isLogin = localStorage.getItem('isLogin')
       isLogin === 'false' ? isLogin = false : isLogin = true
-      isLogin ? next() : next("/login")
+      isLogin ? next() : next('/login')
     }
   },
   {
@@ -50,9 +51,9 @@ const routes = [{
     name: 'me',
     component: me,
     beforeEnter: (to, from, next) => {
-      var isLogin = localStorage.getItem("isLogin")
+      var isLogin = localStorage.getItem('isLogin')
       isLogin === 'false' ? isLogin = false : isLogin = true
-      isLogin ? next() : next("/login")
+      isLogin ? next() : next('/login')
     }
   },
   {
@@ -100,6 +101,11 @@ const routes = [{
     name: 'goodsDetails',
     component: goodsDetails,
     props: true
+  },
+  {
+    path: '/collection',
+    name: 'collection',
+    component: collection
   }
 ]
 

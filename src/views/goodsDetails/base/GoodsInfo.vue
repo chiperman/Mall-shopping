@@ -13,7 +13,7 @@
         </div>
       </van-col>
       <van-col span="4" class="text-right" @click="onLike">
-        <van-icon name="like" size="20px" color="red" />
+        <van-icon name="like" size="20px" :color='like_color' />
         <div>收藏</div>
       </van-col>
     </van-row>
@@ -38,6 +38,13 @@
 
 <script>
   export default {
+    data() {
+      return {
+        collect_list: [],
+        like_color: '',
+        islike: false
+      }
+    },
     props: {
       // 商品原价
       marketPrice: {
@@ -52,7 +59,7 @@
       // 商品标题
       goodsDesc: {
         type: String,
-        default: ""
+        default: ''
       },
       goodsId: {
         type: String,
@@ -61,7 +68,52 @@
     },
     methods: {
       onLike() {
-        this.$toast.success("收藏成功");
+        if (this.islike) {
+          this.like_color = 'blue'
+          this.islike = false
+          this.$toast.success("取消收藏")
+          this.$api.collectionData.editCollection(this.$Cookies.get('userId'), this.$props.goodsId, false).then(({
+            data
+          }) => {
+            console.log('editCollection')
+            console.log(data.is_collection)
+          })
+        } else {
+          this.like_color = 'red'
+          this.islike = true
+          this.$toast.success("收藏成功")
+          this.$api.collectionData.editCollection(this.$Cookies.get('userId'), this.$props.goodsId, true).then(({
+            data
+          }) => {
+            console.log('editCollection')
+            console.log(data.is_collection)
+          })
+        }
+      }
+    },
+    created() {
+      this.$api.collectionData.getCollectionList(this.$Cookies.get('userId')).then(({
+        data
+      }) => {
+        this.collect_list = data.collect_Info
+        console.log(this.$Cookies.get('userId'))
+      })
+      if (this.collect_list.length < 1) {
+        this.like_color = 'blue'
+        this.islike = false
+      }
+      for (let i = 0; i < this.collect_list.length; i++) {
+        if (this.collect_list[i].goods_id === this.$props.goodsId) {
+          if (!this.collect_list[i].is_deleted) {
+            this.like_color = 'red'
+            this.islike = true
+            break
+          } else {
+            this.like_color = 'blue'
+            this.islike = false
+            break
+          }
+        }
       }
     }
   };

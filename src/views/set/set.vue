@@ -56,7 +56,7 @@
     methods: {
       // 顶部导航返回上一页
       onClickLeft() {
-        this.$router.go(-1)
+        this.$router.push('/me')
       },
       setclick(item) {
         if (item.title === '检查更新') {

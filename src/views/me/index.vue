@@ -4,7 +4,7 @@
     <van-nav-bar class='bgcolor' fixed left-arrow @click-left='onBack' @click-right='onClickRight'>
       <div slot='title' style="color: #FFFFFF;">个人中心</div>
       <div slot='right' class='nav-right'>
-        <van-icon name='setting-o' color='#8ec5fd' size='20' />
+        <van-icon name='setting-o' color='#FFFFFF' size='20' />
       </div>
     </van-nav-bar>
     <!-- 用户头像，二维码信息 -->
