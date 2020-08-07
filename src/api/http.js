@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:8088'
 
 axios.defaults.timeout = 10000
 
-axios.defaults.headers['Content-Type'] = 'application/x-www-from-urlencoded'
+axios.defaults.headers['Content-Type'] = 'application/json'
 
 /*
  * 设置请求拦截器

@@ -92,10 +92,14 @@
     },
     created() {
       const TOKEN = this.$Cookies.get("TOKEN");
+      TOKEN ? (this.tipsTxt = "去逛逛看") : '';
       TOKEN ? (this.hisGoodsOrder = true) : (this.tipsTxt = "去登录");
       this.$api.cartData.cartData(this.$Cookies.get('userId')).then(({
         data
       }) => {
+        if (data === null) {
+          return
+        }
         for (var i = 0; i < data.shopping_cart.length; i++) {
           data.shopping_cart[i].isChecked = false
           this.cartInfoList.push(data.shopping_cart[i])
