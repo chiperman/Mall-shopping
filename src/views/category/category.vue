@@ -4,9 +4,7 @@
     <van-row type='flex'>
       <van-col span='6'>
         <van-sidebar v-model='activeKey' @change='onChange'>
-          <van-sidebar-item v-for='(item, i) in list' :key='i' :title='item.name' />
-          <van-sidebar-item title='开发中' disabled />
-          <van-sidebar-item title='开发中' disabled />
+          <van-sidebar-item v-for='(item, i) in list' :key='i' :title='item' />
         </van-sidebar>
       </van-col>
       <van-col span='18'>
@@ -16,7 +14,7 @@
           </van-swipe-item>
         </van-swipe>
         <van-grid :column-num='3' :border='false'>
-          <van-grid-item v-for='(item, index) in HotList' :key='index'>
+          <van-grid-item v-for='(item, index) in goodsList' :key='index'>
             <div class='hot-card'>
               <van-image :src="item.goods_cover_img" />
               <p v-text='item.goods_name'></p>
@@ -56,49 +54,27 @@
     data() {
       return {
         activeKey: 0,
-        HotList: [],
+        categoryList: [],
         images: [
           'https://img.yzcdn.cn/vant/apple-1.jpg',
           'https://img.yzcdn.cn/vant/apple-2.jpg'
         ],
-        list: [{
-            name: '推荐分类'
-          },
-          {
-            name: '进口超市'
-          },
-          {
-            name: '国际品牌'
-          },
-          {
-            name: '男装'
-          },
-          {
-            name: '女装'
-          },
-          {
-            name: '数码产品'
-          },
-          {
-            name: '钟表珠宝'
-          },
-          {
-            name: '奢侈品'
-          },
-          {
-            name: '男鞋'
-          },
-          {
-            name: '女鞋'
-          }
-        ]
+        // 侧边分类列表
+        list: ['华为', '苹果', '化妆水', '耳机', '小米', '笔', '唇膏'],
+        // 分类下的商品列表
+        goodsList: []
       }
     },
     created() {
       this.$api.categoryData.getHotList().then(({
         data
       }) => {
-        this.HotList = data.goods_info
+        this.categoryList = data.goods_info
+      })
+      this.$api.categoryData.getGoodsList(this.list[0]).then(({
+        data
+      }) => {
+        this.goodsList = data.goods_info
       })
     },
     components: {
@@ -107,15 +83,11 @@
     methods: {
       onChange(index) {
         this.type = 'primary'
-        var List = this.HotList
-        var reList = []
-        for (var i = 0; i < List.length; i++) {
-          var index1 = Math.floor(Math.random() * List.length) // 随机下标
-          reList.push(List[index1]) // 将随机出的元素，存放新数组newArr中去
-          List.splice(index1, 1) //    将随机出的元素在arr中删除
-        }
-        var res = [...reList, ...List]
-        this.HotList = res
+        this.$api.categoryData.getGoodsList(this.list[index]).then(({
+          data
+        }) => {
+          this.goodsList = data.goods_info
+        })
       }
     }
   }

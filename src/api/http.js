@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://www.fastmock.site/mock/3f48e4c3a95cb7afca5bc1a1580f2237/mall'
+// axios.defaults.baseURL = 'https://www.fastmock.site/mock/3f48e4c3a95cb7afca5bc1a1580f2237/mall'
+axios.defaults.baseURL = 'http://127.0.0.1:8088'
 
 /*
  * 设置超时请求时间
